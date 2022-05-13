@@ -1,6 +1,7 @@
 # Synology CSI Driver for Kubernetes
 
-The official [Container Storage Interface](https://github.com/container-storage-interface) driver for Synology NAS.
+The official [Container Storage Interface](https://github.com/container-storage-interface) driver for Synology NAS,
+modified for support with [Talos Linux](https://www.talos.dev)
 
 ### Container Images & Kubernetes Compatibility
 Driver Name: csi.san.synology.com

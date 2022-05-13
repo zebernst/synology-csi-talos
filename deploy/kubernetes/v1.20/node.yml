@@ -56,6 +56,7 @@ spec:
       labels:
         app: synology-csi-node
     spec:
+      hostPID: true
       serviceAccount: csi-node-sa
       hostNetwork: true
       containers:
@@ -86,7 +87,7 @@ spec:
           securityContext:
             privileged: true
           imagePullPolicy: IfNotPresent
-          image: synology/synology-csi:v1.1.0
+          image: ghcr.io/zebernst/synology-csi:v1.1.0
           args:
             - --nodeid=$(KUBE_NODE_NAME)
             - --endpoint=$(CSI_ENDPOINT)

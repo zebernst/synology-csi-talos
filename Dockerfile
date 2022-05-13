@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1.4
 # Copyright 2021 Synology Inc.
 
 ############## Build stage ##############
@@ -20,17 +21,33 @@ RUN env GOARCH=$(echo "$TARGETPLATFORM" | cut -f2 -d/) \
         make
 
 ############## Final stage ##############
-FROM alpine:latest
+FROM alpine:latest as driver
 LABEL maintainers="Synology Authors" \
       description="Synology CSI Plugin"
 
-RUN apk add --no-cache e2fsprogs e2fsprogs-extra xfsprogs xfsprogs-extra blkid util-linux iproute2 bash btrfs-progs ca-certificates cifs-utils
+RUN <<-EOF 
+      apk add --no-cache \
+            bash \
+            blkid \
+            btrfs-progs \
+            ca-certificates \
+            cifs-utils \
+            e2fsprogs \
+            e2fsprogs-extra \
+            iproute2 \
+            util-linux \
+            xfsprogs \
+            xfsprogs-extra
+EOF
 
-# Create symbolic link for chroot.sh
+# Create symbolic link for nsenter.sh
 WORKDIR /
-RUN mkdir /csibin
-COPY chroot/chroot.sh /csibin
-RUN chmod 777 /csibin/chroot.sh && ln -s /csibin/chroot.sh /csibin/iscsiadm
+COPY --chmod=777 <<-"EOF" /csibin/nsenter.sh
+      #!/usr/bin/env bash
+      iscsid_pid=$(pgrep iscsid)
+      nsenter --mount="/proc/${iscsid_pid}/ns/mnt" --net="/proc/${iscsid_pid}/ns/net" -- /usr/local/sbin/iscsiadm "$@"
+EOF
+RUN ln -s /csibin/nsenter.sh /csibin/iscsiadm
 
 ENV PATH="/csibin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
