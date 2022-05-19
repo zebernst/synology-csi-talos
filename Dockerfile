@@ -26,26 +26,26 @@ LABEL maintainers="Synology Authors" \
       description="Synology CSI Plugin"
 
 RUN <<-EOF 
-      apk add --no-cache \
-            bash \
-            blkid \
-            btrfs-progs \
-            ca-certificates \
-            cifs-utils \
-            e2fsprogs \
-            e2fsprogs-extra \
-            iproute2 \
-            util-linux \
-            xfsprogs \
-            xfsprogs-extra
+	apk add --no-cache \
+		bash \
+		blkid \
+		btrfs-progs \
+		ca-certificates \
+		cifs-utils \
+		e2fsprogs \
+		e2fsprogs-extra \
+		iproute2 \
+		util-linux \
+		xfsprogs \
+		xfsprogs-extra
 EOF
 
 # Create symbolic link for nsenter.sh
 WORKDIR /
 COPY --chmod=777 <<-"EOF" /csibin/nsenter.sh
-      #!/usr/bin/env bash
-      iscsid_pid=$(pgrep iscsid)
-      nsenter --mount="/proc/${iscsid_pid}/ns/mnt" --net="/proc/${iscsid_pid}/ns/net" -- /usr/local/sbin/iscsiadm "$@"
+	#!/usr/bin/env bash
+	iscsid_pid=$(pgrep iscsid)
+	nsenter --mount="/proc/${iscsid_pid}/ns/mnt" --net="/proc/${iscsid_pid}/ns/net" -- /usr/local/sbin/iscsiadm "$@"
 EOF
 RUN ln -s /csibin/nsenter.sh /csibin/iscsiadm
 
