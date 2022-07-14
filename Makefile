@@ -22,7 +22,7 @@ synology-csi-driver:
 	$(BUILD_ENV) go build -v -ldflags $(BUILD_FLAGS) -o ./bin/synology-csi-driver ./
 
 docker-build:
-	docker buildx build -t $(IMAGE_TAG) . --load
+	docker buildx build -t $(IMAGE_TAG) . --push
 
 docker-build-multiarch:
 	docker buildx build -t $(IMAGE_TAG) --platform linux/amd64,linux/arm/v7,linux/arm64 . --push
