@@ -1,6 +1,6 @@
 {{- if $.Capabilities.APIVersions.Has "snapshot.storage.k8s.io/v1/VolumeSnapshotClass" }}
-{{- if not .disabled }}
 {{- range $name, $_ := $.Values.volumeSnapshotClasses }}
+{{- if not .disabled }}
 ---
 apiVersion: snapshot.storage.k8s.io/v1
 {{- with .deletionPolicy }}
@@ -10,7 +10,7 @@ driver: csi.san.synology.com
 kind: VolumeSnapshotClass
 metadata:
   annotations:
-    storageclass.kubernetes.io/is-default-class: {{ default "false" .isDefault | quote }}
+    snapshot.storageclass.kubernetes.io/is-default-class: {{ default "false" .isDefault | quote }}
   labels: {{- include "synology-csi.labels" $ | nindent 4 }}
   name: {{ $name }}
 {{- with .parameters }}

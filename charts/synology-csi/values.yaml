@@ -1,17 +1,17 @@
 ---
 clientInfoSecret:
   # How to connect to your Synology Diskstation?
-  clients:
-    - host: 192.168.1.1   # the IP address of the Diskstation
-      https: false        # whether the port expects HTTPS or not
-      password: password  # the password of the dedicated CSI user
-      port: 5000          # the port for connecting to the Diskstation Manager application
-      username: username  # the name of the dedicated CSI user
-    - host: 192.168.1.1
-      https: true
-      password: password
-      port: 5001
-      username: username
+#  clients:
+#    - host: 192.168.1.1   # the IP address of the Diskstation
+#      https: false        # whether the port expects HTTPS or not
+#      password: password  # the password of the dedicated CSI user
+#      port: 5000          # the port for connecting to the Diskstation Manager application
+#      username: username  # the name of the dedicated CSI user
+#    - host: 192.168.1.1
+#      https: true
+#      password: password
+#      port: 5001
+#      username: username
   # Whether to create the secret if the chart gets installed or not; ignored on updates.
   create: false
   # Defaults to {{ include "synology-csi.fullname" $ }}-client-info if empty or not present:
@@ -60,14 +60,14 @@ snapshotter:
   affinity: { }
   nodeSelector: { }
   tolerations: [ ]
-storageClasses:
-  synology-iscsi-storage:
+storageClasses: {}
+#  synology-iscsi-storage:
     # One of true or false (default):
     ##disabled: false
     # One of true or false (default):
     ##isDefault: false
     # One of "Retain" or "Delete" (default):
-    reclaimPolicy: Retain
+#    reclaimPolicy: Retain
     # One of "WaitForFirstConsumer" or "Immediate" (default):
     ##volumeBindingMode: Immediate
 
@@ -79,12 +79,12 @@ storageClasses:
     ##  location: /volume1
   # synology-iscsi-storage-delete:
   #   reclaimPolicy: Delete
-volumeSnapshotClasses:
-  synology-snapshotclass:
+volumeSnapshotClasses: {}
+#  synology-snapshotclass:
     # One of true or false (default):
     ##disabled: false
     # One of "Retain" or "Delete" (default):
-    deletionPolicy: Delete
+#    deletionPolicy: Delete
     # One of true or false (default):
     ##isDefault: false
 
