@@ -9,4 +9,4 @@ kubeVersion: ">= 1.20.0"
 sources:
   - https://github.com/christian-schlichtherle/synology-csi-chart/tree/main
   - https://github.com/SynologyOpenSource/synology-csi/tree/main
-version: 0.9.3-SNAPSHOT # must be SemVer 2
+version: 0.9.3
