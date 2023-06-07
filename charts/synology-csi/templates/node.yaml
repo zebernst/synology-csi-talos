@@ -67,6 +67,7 @@ spec:
       {{- with .affinity }}
       affinity: {{- toYaml . | nindent 8 }}
       {{- end }}
+      hostPID: true
       containers:
       {{- with $.Values.images }}
         - name: node-driver-registrar
