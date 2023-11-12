@@ -42,7 +42,7 @@ EOF
 WORKDIR /
 COPY --chmod=777 <<-"EOF" /csibin/nsenter.sh
 	#!/usr/bin/env bash
-	iscsid_pid=$(pgrep iscsid)
+	iscsid_pid=$(pgrep iscsid | head -n 1)
 	BIN="$(basename "$0")"
 	nsenter --mount="/proc/${iscsid_pid}/ns/mnt" --net="/proc/${iscsid_pid}/ns/net" -- "$BIN" "$@"
 EOF
