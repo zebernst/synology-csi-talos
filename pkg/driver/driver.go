@@ -25,7 +25,7 @@ import (
 
 const (
 	DriverName = "csi.san.synology.com" // CSI dirver name
-	DriverVersion = "1.1.2"
+	DriverVersion = "1.1.3"
 )
 
 var (
@@ -79,8 +79,8 @@ func NewControllerAndNodeDriver(nodeID string, endpoint string, dsmService inter
 	d.addNodeServiceCapabilities([]csi.NodeServiceCapability_RPC_Type{
 		csi.NodeServiceCapability_RPC_STAGE_UNSTAGE_VOLUME,
 		csi.NodeServiceCapability_RPC_EXPAND_VOLUME,
+		csi.NodeServiceCapability_RPC_GET_VOLUME_STATS,
 		// csi.NodeServiceCapability_RPC_VOLUME_MOUNT_GROUP,
-		// csi.NodeServiceCapability_RPC_GET_VOLUME_STATS, //TODO
 	})
 
 	log.Infof("New driver created: name=%s, nodeID=%s, version=%s, endpoint=%s", d.name, d.nodeID, d.version, d.endpoint)

@@ -7,7 +7,7 @@ modified for support with [Talos Linux](https://www.talos.dev)
 Driver Name: csi.san.synology.com
 | Driver Version                                                                   | Image                                                                 | Supported K8s Version |
 | -------------------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------- |
-| [v1.1.2](https://github.com/SynologyOpenSource/synology-csi/tree/release-v1.1.2) | [synology-csi:v1.1.2](https://hub.docker.com/r/synology/synology-csi) | 1.20+                 |
+| [v1.1.3](https://github.com/SynologyOpenSource/synology-csi/tree/release-v1.1.3) | [synology-csi:v1.1.3](https://hub.docker.com/r/synology/synology-csi) | 1.20+                 |
 
 
 
@@ -117,9 +117,10 @@ Create and apply StorageClasses with the properties you want.
       name: synostorage
     provisioner: csi.san.synology.com
     parameters:
-      fsType: 'ext4'
+      fsType: 'btrfs'
       dsm: '192.168.1.1'
       location: '/volume1'
+      formatOptions: '--nodiscard'
     reclaimPolicy: Retain
     allowVolumeExpansion: true
     ```
