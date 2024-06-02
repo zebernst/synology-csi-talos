@@ -10,7 +10,7 @@ driver: csi.san.synology.com
 kind: VolumeSnapshotClass
 metadata:
   annotations:
-    snapshot.storageclass.kubernetes.io/is-default-class: {{ default "false" .isDefault | quote }}
+    snapshot.storage.kubernetes.io/is-default-class: {{ default "false" .isDefault | quote }}
   labels: {{- include "synology-csi.labels" $ | nindent 4 }}
   name: {{ $name }}
 {{- with .parameters }}
