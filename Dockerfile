@@ -32,6 +32,7 @@ RUN <<-EOF
 		cifs-utils \
 		e2fsprogs \
 		e2fsprogs-extra \
+		nfs-utils \
 		iproute2 \
 		util-linux \
 		xfsprogs \
