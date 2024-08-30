@@ -12,7 +12,7 @@ clientInfoSecret:
 #      password: password
 #      port: 5001
 #      username: username
-  # Whether to create the secret if the chart gets installed or not; ignored on updates.
+  # Whether to create the secret or not
   create: false
   # Defaults to {{ include "synology-csi.fullname" $ }}-client-info if empty or not present:
   name: "client-info-secret"
