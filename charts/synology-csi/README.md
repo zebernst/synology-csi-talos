@@ -50,7 +50,7 @@ In particular, override the section `clientInfoSecret.clients` to match the conn
 accessing your Synology Diskstation.
 
 You can also use an existing secret (specify using the key `clientInfoSecret.name`) that contains a `clients`
-dictionary under `client-info.yaml` key:
+dictionary under `client-info.yml` key:
 
 ```yaml
 apiVersion: v1
@@ -58,7 +58,7 @@ kind: Secret
 metadata:
   name: <release-name>-client-info
 data:
-  client-info.yaml: |-
+  client-info.yml: |-
     Y2xpZW50czoKLSBob3N0OiAxOTIuMTY4LjEuMQogIGh0dHBzOiBmYWxzZQogIHBhc3N3b3JkOiBwYXNzd29yZAogIHBvcnQ6IDUwMDAKICB1c2VybmFtZTogdXNlcm5hbWUKLSBob3N0OiAxOTIuMTY4LjEuMQogIGh0dHBzOiBmYWxzZQogIHBhc3N3b3JkOiBwYXNzd29yZAogIHBvcnQ6IDUwMDEKICB1c2VybmFtZTogdXNlcm5hbWU=
 ```
 
