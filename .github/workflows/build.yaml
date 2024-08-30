@@ -35,9 +35,9 @@ jobs:
         with:
           images: ghcr.io/zebernst/synology-csi
           tags: |
-            type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}}
-            type=semver,pattern={{major}}
+            type=semver,prefix=v,pattern={{version}}
+            type=semver,prefix=v,pattern={{major}}.{{minor}}
+            type=semver,prefix=v,pattern={{major}}
             type=ref,event=branch
             type=ref,event=pr
             type=edge

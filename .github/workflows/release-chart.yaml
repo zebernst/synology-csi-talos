@@ -26,6 +26,9 @@ jobs:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
       - name: Run chart-releaser
-        uses: helm/chart-releaser-action@v1.5.0
+        # workaround until https://github.com/helm/chart-releaser-action/issues/150 is fixed
+        uses: ./.github/actions/chart-releaser-action
+        with:
+          mark_as_latest: false
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
