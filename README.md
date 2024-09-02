@@ -1,7 +1,9 @@
 # Synology CSI Driver for Kubernetes
 
 The official [Container Storage Interface](https://github.com/container-storage-interface) driver for Synology NAS,
-modified for support with [Talos Linux](https://www.talos.dev)
+modified for support with [Talos Linux](https://www.talos.dev).
+
+This repository also includes a [Helm chart](./charts/synology-csi) for convenience.
 
 ### Container Images & Kubernetes Compatibility
 Driver Name: csi.san.synology.com
@@ -24,7 +26,8 @@ The Synology CSI driver supports:
     * DSM 7.0 or above
     * DSM UC 3.1 or above
 - Go version 1.21 or above is recommended
-- (Optional) Both [Volume Snapshot CRDs](https://github.com/kubernetes-csi/external-snapshotter/tree/v4.0.0/client/config/crd) and the [common snapshot controller](https://github.com/kubernetes-csi/external-snapshotter/tree/v4.0.0/deploy/kubernetes/snapshot-controller) must be installed in your Kubernetes cluster if you want to use the **Snapshot** feature
+- (Optional) Both [Volume Snapshot CRDs](https://github.com/kubernetes-csi/external-snapshotter/tree/v4.0.0/client/config/crd) and the [common snapshot controller](https://github.com/kubernetes-csi/external-snapshotter/tree/v4.0.0/deploy/kubernetes/snapshot-controller) must be installed in your Kubernetes cluster if you want to use the **Snapshot** feature.
+> There is a maintained helm chart for the snapshot-controller located [here](https://github.com/piraeusdatastore/helm-charts/tree/main/charts/snapshot-controller).
 
 ### Notice
 1. Before installing the CSI driver, make sure you have created and initialized at least one **storage pool** and one **volume** on your DSM.
