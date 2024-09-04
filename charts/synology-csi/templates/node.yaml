@@ -85,7 +85,7 @@ spec:
             - name: REGISTRATION_PATH
               value: {{ $.Values.node.kubeletPath }}/plugins/csi.san.synology.com/csi.sock
           {{- with .nodeDriverRegistrar }}
-          image: {{ .image }}:{{ .tag }}
+          image: {{ .image.repository }}:{{ .image.tag }}
           imagePullPolicy: {{ .pullPolicy }}
           {{- end }}
           securityContext:
@@ -109,7 +109,7 @@ spec:
                 fieldRef:
                   fieldPath: spec.nodeName
           {{- with .plugin }}
-          image: {{ .image }}:{{ .tag | default $.Chart.AppVersion }}
+          image: {{ .image.repository }}:{{ .image.tag | default $.Chart.AppVersion }}
           imagePullPolicy: {{ .pullPolicy }}
           {{- end }}
           securityContext:
