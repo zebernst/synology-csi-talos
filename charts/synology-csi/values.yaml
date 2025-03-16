@@ -101,3 +101,6 @@ volumeSnapshotClasses: {}
     ##parameters:
     ##  description: "Kubernetes CSI"
     ##  is_locked: "false"
+test:
+  enabled: true
+  storageClass: synology-iscsi-storage-delete

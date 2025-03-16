@@ -1,3 +1,4 @@
+{{- if .Values.test.enabled }}
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -7,14 +8,14 @@ metadata:
     helm.sh/hook-delete-policy: hook-succeeded
   labels: {{- include "synology-csi.labels" $ | nindent 4 }}
   name: {{ include "synology-csi.fullname" $ }}-test
+  namespace: {{ .Release.Namespace }}
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: synology-iscsi-storage-delete
+  storageClassName: {{ .Values.test.storageClass }}
   resources:
     requests:
       storage: 1Gi
-
 ---
 apiVersion: batch/v1
 kind: Job
@@ -26,6 +27,7 @@ metadata:
     app: test
     {{- include "synology-csi.labels" $ | nindent 4 }}
   name: {{ include "synology-csi.fullname" $ }}-test
+  namespace: {{ .Release.Namespace }}
 spec:
   template:
     metadata:
@@ -46,3 +48,4 @@ spec:
         - name: data
           persistentVolumeClaim:
             claimName: {{ include "synology-csi.fullname" $ }}-test
+{{- end }}
