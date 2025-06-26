@@ -35,7 +35,7 @@ The Synology CSI driver supports:
 3. After you complete the steps below, the *full* deployment of the CSI driver, including the snapshotter, will be installed. If you don’t need the **Snapshot** feature, you can install the *basic* deployment of the CSI driver instead.
 
 ### Procedure
-1. Clone the git repository. `git clone https://github.com/SynologyOpenSource/synology-csi.git`
+1. Clone the git repository. `git clone https://github.com/zebernst/synology-csi-talos.git`
 2. Enter the directory. `cd synology-csi`
 3. Copy the client-info-template.yml file. `cp config/client-info-template.yml config/client-info.yml`
 4. Edit `config/client-info.yml` to configure the connection information for DSM. You can specify **one or more** storage systems on which the CSI volumes will be created. Change the following parameters as needed:
