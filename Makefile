@@ -1,8 +1,8 @@
 #  Copyright 2021 Synology Inc.
 
-REGISTRY_NAME=ghcr.io/zebernst
+REGISTRY_NAME=ghcr.io/mortalflesh
 IMAGE_NAME=synology-csi
-IMAGE_VERSION=v1.2.0
+IMAGE_VERSION=v1.2.1
 IMAGE_TAG=$(REGISTRY_NAME)/$(IMAGE_NAME):$(IMAGE_VERSION)
 
 # For now, only build linux/amd64 platform
@@ -22,7 +22,7 @@ synology-csi-driver:
 	$(BUILD_ENV) go build -v -ldflags $(BUILD_FLAGS) -o ./bin/synology-csi-driver ./
 
 docker-build:
-	docker buildx build -t $(IMAGE_TAG) . --push
+	docker buildx build -t $(IMAGE_TAG) --platform linux/amd64 . --push
 
 docker-build-multiarch:
 	docker buildx build -t $(IMAGE_TAG) --platform linux/amd64,linux/arm/v7,linux/arm64 . --push

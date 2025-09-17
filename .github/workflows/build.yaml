@@ -33,7 +33,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: ghcr.io/zebernst/synology-csi
+          images: ghcr.io/mortalflesh/synology-csi
           tags: |
             type=semver,prefix=v,pattern={{version}}
             type=semver,prefix=v,pattern={{major}}.{{minor}}
@@ -41,7 +41,7 @@ jobs:
             type=ref,event=branch
             type=ref,event=pr
             type=edge
-          labels: org.opencontainers.image.source=https://github.com/zebernst/synology-csi-talos
+          labels: org.opencontainers.image.source=https://github.com/mortalflesh/synology-csi-talos
 
       - name: Build and push
         uses: docker/build-push-action@v4

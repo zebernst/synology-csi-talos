@@ -36,9 +36,11 @@ images:
   plugin:
     pullPolicy: IfNotPresent
     image:
-      repository: ghcr.io/zebernst/synology-csi
+      repository: ghcr.io/mortalflesh/synology-csi
       # Defaults to {{ $.Chart.AppVersion }} if empty or not present:
-      tag: ""
+      tag: "v1.2.1"
+      imagePullSecrets:
+        - name: ghcr-secret
   provisioner:
     pullPolicy: IfNotPresent
     image:

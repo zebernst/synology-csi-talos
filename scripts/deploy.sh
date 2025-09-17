@@ -74,7 +74,7 @@ case "$1" in
         csi_install
         ;;
     run)
-        csi_build
+        #csi_build
         csi_install
         ;;
     *)

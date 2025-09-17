@@ -33,6 +33,7 @@ RUN <<-EOF
 		e2fsprogs \
 		e2fsprogs-extra \
 		nfs-utils \
+		open-iscsi \
 		iproute2 \
 		util-linux \
 		xfsprogs \
@@ -44,6 +45,10 @@ WORKDIR /
 COPY --chmod=777 <<-"EOF" /csibin/nsenter.sh
 	#!/usr/bin/env bash
 	iscsid_pid=$(pgrep iscsid | head -n 1)
+	if [ -z "$iscsid_pid" ]; then
+		echo "Error: iscsid process not found" >&2
+		exit 1
+	fi
 	BIN="$(basename "$0")"
 	nsenter --mount="/proc/${iscsid_pid}/ns/mnt" --net="/proc/${iscsid_pid}/ns/net" -- "$BIN" "$@"
 EOF

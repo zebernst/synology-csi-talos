@@ -129,6 +129,10 @@ spec:
               mountPath: /csi
       {{- end }}
       hostNetwork: true
+      {{- with $.Values.images.plugin.image.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       {{- with .nodeSelector }}
       nodeSelector: {{- toYaml . | nindent 8 }}
       {{- end }}

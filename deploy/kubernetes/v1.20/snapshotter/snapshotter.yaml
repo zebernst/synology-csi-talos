@@ -57,6 +57,8 @@ spec:
     spec:
       serviceAccountName: csi-snapshotter-sa
       hostNetwork: true
+      imagePullSecrets:
+        - name: ghcr-secret
       containers:
         - name: csi-snapshotter
           securityContext:
@@ -81,7 +83,7 @@ spec:
             capabilities:
               add: ["SYS_ADMIN"]
             allowPrivilegeEscalation: true
-          image: ghcr.io/zebernst/synology-csi:v1.2.0
+          image: ghcr.io/mortalflesh/synology-csi:v1.2.1
           args:
             - --nodeid=NotUsed
             - --endpoint=$(CSI_ENDPOINT)
