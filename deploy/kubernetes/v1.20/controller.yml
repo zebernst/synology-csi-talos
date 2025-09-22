@@ -146,7 +146,7 @@ spec:
             capabilities:
               add: ["SYS_ADMIN"]
             allowPrivilegeEscalation: true
-          image: ghcr.io/mortalflesh/synology-csi:v1.2.1
+          image: ghcr.io/mortalflesh/synology-csi:v1.2.5
           args:
             - --nodeid=NotUsed
             - --endpoint=$(CSI_ENDPOINT)

@@ -9,7 +9,7 @@ This repository also includes a [Helm chart](./charts/synology-csi) for convenie
 Driver Name: csi.san.synology.com
 | Driver Version                                                                   | Image                                                                 | Supported K8s Version |
 | -------------------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------- |
-| [v1.2.1](https://github.com/SynologyOpenSource/synology-csi/tree/release-v1.2.1) | [synology-csi:v1.2.1](https://hub.docker.com/r/synology/synology-csi) | 1.20+                 |
+| [v1.2.5](https://github.com/SynologyOpenSource/synology-csi/tree/release-v1.2.5) | [synology-csi:v1.2.5](https://hub.docker.com/r/synology/synology-csi) | 1.20+                 |
 
 
 

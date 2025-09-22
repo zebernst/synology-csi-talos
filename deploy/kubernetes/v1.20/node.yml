@@ -89,7 +89,7 @@ spec:
           securityContext:
             privileged: true
           imagePullPolicy: IfNotPresent
-          image: ghcr.io/mortalflesh/synology-csi:v1.2.1
+          image: ghcr.io/mortalflesh/synology-csi:v1.2.5
           args:
             - --nodeid=$(KUBE_NODE_NAME)
             - --endpoint=$(CSI_ENDPOINT)

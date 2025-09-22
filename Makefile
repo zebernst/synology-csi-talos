@@ -2,7 +2,7 @@
 
 REGISTRY_NAME=ghcr.io/mortalflesh
 IMAGE_NAME=synology-csi
-IMAGE_VERSION=v1.2.1
+IMAGE_VERSION=v1.2.5
 IMAGE_TAG=$(REGISTRY_NAME)/$(IMAGE_NAME):$(IMAGE_VERSION)
 
 # For now, only build linux/amd64 platform
